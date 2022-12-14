@@ -10,21 +10,25 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
-    <h1>Hi, Please enter some text</h1>
-    <form action = "http://localhost:5000/result" method = "POST">
-      <input type ="text" name = "impath" />
-       <input type = "submit" value = "submit"/><br> </br>
-    </form>
-
     <style>
         body{background-attachment: fixed;background-color: aqua;text-align: center;}
     </style>
-        <h1 id="message"> </h1>
-        <ul >
-            {% for image in links %}
-                <img src={{image}} style="width:128px;height:128px;">
-            {% endfor %}
-        </ul>
-
+    <h1>Search</h1>
+    <form action = "/result" method = "POST">
+      <input type ="text" name = "impath" />
+       <input type = "submit" value = "submit"/><br> </br>
+    </form>
+    <h1 id="message"> </h1>
+    <ul >
+        {% for image in links %}
+            <img src={{image}} style="width:128px;height:128px;">
+        {% endfor %}
+    </ul>
+    <script>
+        array = `{{links}}`.split(" ")
+        if (array[0].length == 2){
+          message.innerHTML += 'Sorry there were no results for your search. Please try again.'
+        } 
+      </script>
 </body>
 </html>
